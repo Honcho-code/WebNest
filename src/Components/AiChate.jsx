@@ -89,7 +89,7 @@ function AiChat() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="fixed bottom-4 right-4 lg:right-20 md:right-12 w-full max-w-fit pl-4 md:pl-0   md:max-w-[400px] z-50 "
+            className="fixed bottom-4 px-4 md:px-0 right-0 lg:right-20 md:right-12 w-full   md:max-w-[400px] z-50 "
             initial={{ opacity: 0, scale: 0.8, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.8, y: 20 }}
