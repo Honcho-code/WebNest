@@ -1,5 +1,4 @@
 import React from 'react'
-import { ButtonPrimary } from './Button';
 
 const Footer = () => {
     const sitemap = [
@@ -8,16 +7,20 @@ const Footer = () => {
           href: '#home'
         },
         {
+          label: 'Service',
+          href: '#service'
+        },
+        {
           label: 'About',
           href: '#about'
         },
         {
-          label: 'Work',
-          href: '#work'
+          label: 'Portfolio',
+          href: '#portfolio'
         },
         {
           label: 'Reviews',
-          href: '#reviews'
+          href: '#testemonial'
         },
         {
           label: 'Contact me',
@@ -26,33 +29,26 @@ const Footer = () => {
       ];
       
       const socials = [
-        {
-          label: 'GitHub',
-          href: 'https://github.com/Honcho-code'
-        },
-        {
-          label: 'LinkedIn',
-          href: 'https://www.linkedin.com/in/clinton-rapheal-65b561212'
-        },
+
         {
           label: 'Twitter X',
-          href: 'https://x.com/honchocode?s=21'
+          href: 'https://x.com/sporthub01?s=21'
         },
         {
           label: 'Instagram',
-          href: 'https://www.instagram.com/the_rapheal_code?igsh=amVpNzRmemhsbTQx&utm_source=qr'
+          href: 'https://www.instagram.com/the_webnest1?igsh=MTZkc2N6NWkxcXd6cg%3D%3D&utm_source=qr'
         }
       ];
   return (
-    <footer className="section">
-        <div className="container">
+    <footer className="px-4 md:px-32 lg:px-60 py-10 md:py-9">
+        <div className="">
             <div className="lg:grid lg:grid-cols-2">
                 <div className="mb-10">
                     <h2 className="headline-1 mb-8 lg:max-w-[12ch] reveal-up">
                         Let&apos;s work together today!
                     </h2>
 
-                    <ButtonPrimary href="mailto:clintonrapheal5@gmail.com" label="Start project" icon="chevron_right" classes="reveal-up"/>
+                    
                 </div>
 
                 <div className="grid grid-cols-2 gap-4 g:pl-20">
@@ -84,10 +80,10 @@ const Footer = () => {
 
             <div className="flex items-center justify-between pt-10 mb-8">
                 <a href="" className="">
-                    <img src="./images/logo.svg" alt="logo" width={40} height={40} />
+                    <img src="./images/favicon.svg" alt="logo" width={40} height={40} />
                 </a>
                 <p className="text-zinc-500 text-sm">
-                    &copy; 2024 <span className="text-zinc-200">RaphealClinton</span>
+                    &copy; 2025 <span className="text-zinc-200">Webnest</span>
                 </p>
             </div>
         </div>

@@ -12,11 +12,40 @@
     scroll-behavior: smooth;
 }
 body{
-    @apply bg-zinc-900 text-zinc-50
+    @apply bg-white text-zinc-900
 }
-.reveal-up{
+@layer utilities{
+    .animate-slideLeft{
+        animation: slideLeft 0.4s ease forwards;
+    }
+    .animate-slideRight{
+        animation: slideRight 0.4s ease forwards;
+    }
+    @keyframes slideLeft {
+        0% {
+          opacity: 0;
+          transform: translateX(100%);
+        }
+        100% {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+    
+      @keyframes slideRight {
+        0% {
+          opacity: 0;
+          transform: translateX(-100%);
+        }
+        100% {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+}
+/* .reveal-up{
     @apply translate-y-20 opacity-0
-}
+} */
 .menu-btn{
     @apply w-10 h-10 grid place-items-center bg-zinc-50/10 rounded-xl ring-inset ring-1 ring-zinc-50/[0.02] backdrop-blur-2xl hover:bg-zinc-50/15 transition-[transform,background-color] active:scale-95
 }
@@ -46,10 +75,10 @@ body{
 
 /* *UTILITIES */
 
-.material-symbols-rounded{
+/* .material-symbols-rounded{
     @apply w-[1em] h-[1em] overflow-hidden;
     font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
-}
+} */
 
 .container{
     @apply px-4 mx-auto lg:px-8 xl:max-w-6xl
@@ -64,7 +93,7 @@ body{
 /* * TYPOGRAPHY */
 .headline-1, .headline-2{
     @apply max-w-max;
-    background: -webkit-linear-gradient(0deg, #fafafa, #a1a1a1);;
+    background: black;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -84,7 +113,7 @@ body{
     @apply px-3
 }
 .btn-primary{
-    @apply h-11 bg-red-500 text-zinc-950 hover:bg-red-400 active:bg-red-500
+    @apply h-11 bg-blue-600 text-zinc-950 hover:bg-blue-600 active:bg-blue-600
 }
 .btn-outline{
     @apply h-11 bg-zinc-800 hover:bg-zinc-700 active:bg-zinc-800
@@ -93,10 +122,10 @@ body{
     @apply pt-20 lg:pt-32
 }
 .label{
-    @apply block text-zinc-200 text-sm font-normal mb-2
+    @apply block text-zinc-800 text-sm font-normal mb-2
 }
 .text-field{
-    @apply block outline-none w-full px-3 py-3 text-sm bg-zinc-800 rounded-xl ring-1 ring-inset ring-transparent transition-shadow hover:ring-zinc-50/5 focus:ring-red-400 focus:ring-2
+    @apply block outline-none w-full px-3 py-3 text-sm bg-slate-100 rounded-xl ring-1 ring-inset ring-transparent transition-shadow hover:ring-slate-50 focus:ring-blue-600 focus:ring-2
 }
 .text-field::placeholder{
     @apply text-zinc-400

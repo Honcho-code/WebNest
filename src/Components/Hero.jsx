@@ -1,46 +1,51 @@
-import React from 'react'
-import { ButtonPrimary, ButtonOutline } from './Button'
+import { useEffect, useState } from 'react'
 
 const Hero = () => {
-    const handleDownload = () => {
-        const link = document.createElement("a");
-        link.href = "/path-to-your-image.jpg"; // Replace with the correct image path or URL
-        link.download = "your-image.jpg"; // Set the file name
-        link.click();
-      };
+    const [current, setCurrent] = useState(0)
+    
+
+    const images = [
+        {
+            image: '../images/project-1.jpg'
+        },
+        {
+            image: '../images/project-2.jpg'
+        },
+        {
+            image: '../images/project-3.jpg'
+        },
+        {
+            image: '../images/project-4.jpg'
+        },
+        {
+            image: '../images/project-5.jpg'
+        },
+        {
+            image: '../images/project-6.jpg'
+        },
+    ]
+    useEffect(()=>{
+        const interval = setInterval(() => {
+            setCurrent((prev) => (prev + 1) % images.length);
+          }, 4000);
+          return () => clearInterval(interval);
+    },[])
   return (
-    <section id='home' className='pt-28 lg:pt-36'>
-        <div className='container items-center lg:grid lg:grid-cols-2 lg:gap-10'>
+    <div className='px-4 md:px-32 lg:px-60 py-10 md:py-9' id='home'>
+        <div className='block lg:grid md:grid-cols-2 items-center'>
             <div>
-                <div className='flex items-center gap-3'>
-                    <figure className='img-box w-9 h-9 rounded-lg'>
-                        <img src="./images/avatar-1.jpg" width={40} height={40} alt='Rapheal clinton portrait' className='img-cover' />
-                    </figure>
-                    <div className="flex items-center gap-1.5 text-zinc-400 text-sm tracking-wide">
-                        <span className='relative w-2 h-2 rounded-full bg-emerald-400'>
-                            <span className="absolute inset-0 rounded-full bg-emerald-400 animate-ping"></span>
-                        </span>
-                        Available for work
-                    </div>
-                </div>
-                <h2 className="headline-1 max-w-[15ch] sm:max-w-[20ch] lg:max-w-[15ch] mt-5 mb-8 lg:mb-10">
-                    Building Scalable Modern Websites for the Future
-                </h2>
-
-                <div className="flex items-center gap-3">
-                    <ButtonPrimary label="Download CV" icon="download" href="./images/Rapheal clinton.pdf" />
-
-                    <ButtonOutline href="#about" label="Scroll down" icon="arrow_downward"/>
+                <h2 className='text-2xl md:text-4xl w-80 md:w-full lg:text-5xl'>Building Scalable Mordern Website For Your Business</h2>
+                <p className='md:text-xl text-gray-500 w-4/6 mb-5 mt-2 lg:text-2xl lg:my-5'>Let`s grow your online presence with a fully responsive and functional website</p>
+                <div className='block md:flex md:gap-3'>
+                    <a href='#contact' className=' w-full md:w-auto bg-blue-600 text-white px-5 py-3 rounded mr-3 md:mr-0'>Contact us</a>
+                    <a href='#about' className='mt-5 md:mt-0  w-full md:w-auto bg-slate-100 text-gray-600 px-5 py-3 rounded'> Scroll Down</a>
                 </div>
             </div>
-
-            <div className="hidden lg:block">
-                <figure className='w-full max-w-[480px] ml-auto bg-gradient-to-t from-red-600 via-25% via-red-400/40 to-65% rounded-[60px] overflow-hidden'>
-                    <img src="./images/profile.png" width={656}height={800} alt="Rapheal CLinton" className='w-full'/>
-                </figure>
+            <div>
+                <img src={images[current].image} alt="hero-image" className='hidden lg:block' />
             </div>
         </div>
-    </section>
+    </div>
   )
 }
 

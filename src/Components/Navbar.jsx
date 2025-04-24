@@ -1,74 +1,48 @@
-import { useEffect, useRef } from 'react'
-import PropTypes from 'prop-types'
+import React, { useState } from "react";
 
-const Navbar = ({ navOpen }) => {
-    const lastActiveLink = useRef()
-    const activeBox = useRef()
-
-    const initActiveBox = () => {
-      activeBox.current.style.top = lastActiveLink.current.offsetTop + 'px';
-      activeBox.current.style.left = lastActiveLink.current.offsetLeft + 'px';
-      activeBox.current.style.width = lastActiveLink.current.offsetWidth + 'px';
-      activeBox.current.style.height = lastActiveLink.current.offsetHeight + 'px';
-    }
-
-    useEffect(initActiveBox, [])
-    window.addEventListener('resize', initActiveBox)
-
-    const activeCurrentLink = (event) =>{
-      lastActiveLink.current?.classList.remove('active')
-      event.target.classList.add('active')
-      lastActiveLink.current = event.target;
-
-      activeBox.current.style.top = event.target.offsetTop + 'px';
-      activeBox.current.style.left = event.target.offsetLeft + 'px';
-      activeBox.current.style.width = event.target.offsetWidth + 'px';
-      activeBox.current.style.height = event.target.offsetHeight + 'px';
-    }
-
-    const navItems = [
-        {
-          label: 'Home',
-          link: '#home',
-          className: 'nav-link active',
-          ref: lastActiveLink
-        },
-        {
-          label: 'About',
-          link: '#about',
-          className: 'nav-link'
-        },
-        {
-          label: 'Work',
-          link: '#work',
-          className: 'nav-link'
-        },
-        {
-          label: 'Reviews',
-          link: '#reviews',
-          className: 'nav-link'
-        },
-        {
-          label: 'Contact',
-          link: '#contact',
-          className: 'nav-link md:hidden'
-        }
-      ];
-
+const Navbar = () => {
+  const [isMobile, setIsMobile] = useState(false);
   return (
-    <nav className={"navber" + (navOpen ? ' active' : '')}>
-        {navItems.map(({ label, link, className, ref }, key) =>(
-            <a href={link} key={key} className={className} ref={ref} onClick={activeCurrentLink}>
-                {label}
-            </a>
-        ))}
-        <div className='active-box' ref={activeBox}>
-
+    <div className="sticky top-0">
+          <div className="flex items-center justify-between px-3 md:px-12 lg:px-20 py-3 md:py-5 bg-white">
+      <div>
+        <img src="../images/favicon.svg" />
+      </div>
+      <div className="hidden md:block">
+        <div className="flex md:gap-6 lg:gap-10 bg-slate-100 px-4 py-2 rounded">
+          <a href="#home" className="">Home</a>
+          <a href="#service" className="">Service</a>
+          <a href="#about" className="">About</a>
+          <a href="#portfolio" className="">Portfolio</a>
+          <a href="#testemonial" className="">Testemonial</a>
         </div>
-    </nav>
-  )
-}
-Navbar.PropTypes = {
-    navOpen: PropTypes.bool.isRequired
-}
-export default Navbar
+      </div>
+      <div className="hidden md:block">
+        <a href="#contact" className="py-2 px-4 bg-blue-600 text-white rounded" >Contact us</a>
+      </div>
+      <div className="md:hidden">
+        <button className="bg-slate-100 px-2 py-2 rounded" onClick={()=>setIsMobile(!isMobile)}>
+            <span className="material-symbols-rounded">
+              {isMobile ? "close" : "menu"}
+            </span>
+        </button>
+      </div>
+    </div>
+    {
+      isMobile ? <div className="md:hidden absolute w-full">
+        <div className="flex flex-col gap-4 px-4 bg-slate-50 py-5">
+        <a href="#home" className="" onClick={()=>setIsMobile(!isMobile)}>Home</a>
+          <a href="#service" className="" onClick={()=>setIsMobile(!isMobile)}>Service</a>
+          <a href="#about" className="" onClick={()=>setIsMobile(!isMobile)}>About</a>
+          <a href="#portfolio" className="" onClick={()=>setIsMobile(!isMobile)}>Portfolio</a>
+          <a href="#testemonial" className="" onClick={()=>setIsMobile(!isMobile)}>Testemonial</a>
+          <a href="#contact" className="py-2 bg-blue-600 rounded text-white flex justify-center" onClick={()=>setIsMobile(!isMobile)}>Contact Us</a>
+        </div>
+      </div>
+      : ""
+    }
+    </div>
+  );
+};
+
+export default Navbar;
