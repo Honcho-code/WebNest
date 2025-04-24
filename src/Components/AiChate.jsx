@@ -65,7 +65,7 @@ function AiChat() {
   };
 
   return (
-    <div className="px-4 md:px-32 lg:px-60">
+    <div className="">
       <motion.div
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
@@ -89,7 +89,7 @@ function AiChat() {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="fixed bottom-4 right-4 lg:right-20 md:right-12 w-full max-w-[345px]  md:max-w-[400px] z-50 "
+            className="fixed bottom-4 right-4 lg:right-20 md:right-12 w-full max-w-fit  md:max-w-[400px] z-50 "
             initial={{ opacity: 0, scale: 0.8, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.8, y: 20 }}
@@ -200,7 +200,7 @@ function AiChat() {
                     placeholder="Type your message..."
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
-                    className="flex-1"
+                    className="flex-1 text-lg"
                   />
                   <motion.div
                     whileHover={{ scale: 1.05 }}
